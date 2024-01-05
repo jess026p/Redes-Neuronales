@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script de Datepicker (CDN) -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="{{ url_for('static', filename='js/validacion.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/cargar.js') }}"></script>
+
+
+</head>
+<header>
+    <nav class="navbar navbar-light  bg-info">
+        <a class="navbar-brand mx-auto" href="#">
+            <img src="{{ url_for('static', filename='img/red.jpg') }}" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            Proyecto de Inteligencia de Negocios
+        </a>
+    </nav>
+</header>
+
+<body onload="loaded()">
+    <div class="container mt-4 text-center">
+        <h2>Formulario de Predicción</h2>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col">
+                <form id="formularioPrediccion" action="/resultados" method="post" onsubmit="enviarFormulario(event)">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="nproducto">Nombre producto:</label>
+                                        <input type="text" class="form-control" id="nproducto" name="nproducto"
+                                            placeholder="Nombre producto" oninput="validarSoloLetras(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="cproducto">Clase producto:</label>
+                                        <select class="form-control" id="cproducto" name="cproducto">
+                                            <option value="1">Seleccionar</option>
+                                            <option value="2">Deluxe</option>
+                                            <option value="3">Economia</option>
+                                            <option value="4">Normal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputnombreM">Nombre Marca:</label>
+                                        <select id="inputnombreM" class="form-control" name="inputnombreM">
+
+                                            <option>Contoso</option>
+                                            <option>litware</option>
+                                            <option>Northwind Traders</option>
+                                            <option>Southridge Toys</option>
+                                            <option>Tailspin Toys</option>
+                                            <option>The Phone Company</option>
+                                            <option>Wide World importers</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="ColorP">Color Producto:</label>
+                                        <select id="inputColorP" class="form-control" name="inputColorP">
+                                            <option selected>Color producto...</option>
+                                            <option>Amarillo</option>
+                                            <option>Azul</option>
+                                            <option>Blanco</option>
+                                            <option>Gtis</option>
+                                            <option>Marron</option>
+                                            <option>Negro</option>
+                                            <option>Oro</option>
+                                            <option>Plata</option>
+                                            <option>Red</option>
+                                            <option>Rosa</option>
+                                            <option>Verde</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Stock">Estado Stock:</label>
+                                        <select id="inputStock" class="form-control" name="inputStock">
+                                            <option selected>Stock...</option>
+                                            <option>Medio</option>
+                                            <option>alto</option>
+                                            <option>bajo</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCantDescuento">Cantidad de Descuento:</label>
+                                        <input type="number" class="form-control" id="inputCantDescuento"
+                                            name="inputCantDescuento" oninput="validarSoloNumeros(this)">
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputMontoDev">Monto Devolucion</label>
+                                        <input type="number" class="form-control" id="inputMontoDev"
+                                            name="inputMontoDev" oninput="validarSoloNumeros(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCantVenta">Cantidad de Venta</label>
+                                        <input type="number" class="form-control" id="inputCantVenta"
+                                            name="inputCantVenta" oninput="validarSoloNumeros(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="canal">Canal:</label>
+                                        <input type="text" name="canal" class="form-control" id="canal"
+                                            placeholder="Canal.." oninput="validarSoloLetras(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputnombreT">Nombre Tienda:</label>
+                                        <select id="inputnombreT" class="form-control" name="inputnombreT">
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="inputOcupacionC">Ocupacion Cliente:</label>
+                                        <select id="inputOcupacionC" class="form-control" name="inputOcupacionC">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="NHijos">Hijos en casa:</label>
+                                        <input type="text" class="form-control" id="NHijos" name="NHijos"
+                                            oninput="validarSoloNumeros(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="TNHijos">Total Hijos en casa:</label>
+                                        <input type="text" class="form-control" id="THijos" name="TNHijos"
+                                            oninput="validarSoloNumeros(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="NAutos">Numero Autos:</label>
+                                        <input type="number" class="form-control" id="NAutos" name="NAutos"
+                                            oninput="validarSoloNumeros(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="ingresosA">ingresos Anuales:</label>
+                                        <input type="text" class="form-control" id="ingresosA" name="ingresosA"
+                                            oninput="validarSoloNumerosCos(this)">
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="TipoP">Tipo promocion:</label>
+                                        <input type="text" oninput="validarSoloLetras(this)" class="form-control"
+                                            id="TipoP" name="TipoP">
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Ciudad">Ciudad:</label>
+                                        <input type="text" oninput="validarSoloLetras(this)" class="form-control"
+                                            id="Ciudad" name="Ciudad">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="fechaSelector">Fecha:</label>
+                                        <input type="text" class="form-control" id="fechaSelector" name="fechaSelector"
+                                            readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="CUnitario">Costo Unitario:</label>
+                                        <input type="text" class="form-control" id="CUnitario" placeholder="$"
+                                            oninput="validarSoloNumerosCos(this)" name="CUnitario">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="PrecioU">Precio Unitario:</label>
+                                        <input type="text" class="form-control" id="PrecioU" placeholder="$"
+                                            oninput="validarSoloNumerosCos(this)">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="inputSubC">Subcategoria:</label>
+                                        <select id="inputSubC" class="form-control" name="inputSubC">
+
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPesoP">Peso Producto</label>
+                                        <input type="text" name="inputPesoP" class="form-control" id="inputPesoP"
+                                            placeholder="(kg)" oninput="validarSoloNumerosCos(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputDesc">Monto Descuento</label>
+                                        <input type="text" class="form-control" id="inputDesc"
+                                            oninput="validarSoloNumerosCos(this)" name="inputDesc">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputDevo">Cantidad de Devolucion</label>
+                                        <input type="number" class="form-control" id="inputDevo"
+                                            oninput="validarSoloNumeros(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputVentaT">Venta Total</label>
+                                        <input type="text" name="inputVentaT" class="form-control" id="inputVentaT"
+                                            oninput="validarSoloNumerosCos(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputGanancias">Ganancias</label>
+                                        <input type="text" name="inputGanancias" class="form-control"
+                                            id="inputGanancias" oninput="validarSoloNumerosCos(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEstadoC">Estado Civil:</label>
+                                        <input type="text" oninput="validarSoloLetras(this)" class="form-control"
+                                            name="inputEstadoC" id="inputEstadoC" oninput="validarSoloLetras(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="genero">Género:</label>
+                                        <select class="form-control" id="genero" name="genero">
+                                            <option value="masculino">Masculino</option>
+                                            <option value="femenino">Femenino</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEDUC">Educacion Cliente:</label>
+                                        <input type="text" class="form-control" id="inputEDUC"
+                                            oninput="validarSoloLetras(this)">
+
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="casa">Casa propia:</label>
+                                        <select class="form-control" id="casa" name="casa">
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPromociones">Promocion:</label>
+                                        <input type="text" class="form-control" id="inputPromociones" name=""
+                                            oninput="validarSoloLetras(this)">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputpoDesc">Porcentaje Descuento</label>
+                                        <input type="text" class="form-control" id="inputpoDesc" name="inputpoDesc"
+                                            oninput="validarSoloNumerosCos(this)">
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="pais">Pais</label>
+                                        <input type="text" class="form-control" id="pais"
+                                            oninput="validarSoloLetras(this)">
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="region">Region:</label>
+                                        <input type="text" class="form-control" id="region"
+                                            oninput="validarSoloLetras(this)">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="datosFormulario" name="datosFormulario">
+                    <div class="container mt-4 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Predecir</button>
+                    </div>
+                    <br>
+                    <div class="container mt-4 text-center">
+                        <h2>Predicion</h2>
+                        <input type="text" class="form-control col-6 mx-auto" id="prediccion" name="prediccion">
+                    </div>
+                    <div class="container mt-4 text-center">
+                        <button type="reset" class="btn btn-secondary btn-lg">Limpiar Datos</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+<br>
+<footer>
+    <p>&copy; 2024 Proyecto final Inteligencia de Negocios</p>
+</footer>
+
+</html>

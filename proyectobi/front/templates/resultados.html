@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos enviados al servidor</title>
+</head>
+<body>
+    <h1>Resultados de la predicción</h1>
+    <div id="resultados-container"></div>
+
+    <script>
+        // Supongamos que tienes una función que obtiene los resultados (usando fetch, AJAX, etc.)
+        async function obtenerResultados() {
+            const response = await fetch('/resultados', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // Puedes enviar algún cuerpo si es necesario (datos del formulario, por ejemplo)
+                body: JSON.stringify({
+                    // ... datos del formulario ...
+                })
+            });
+
+            const data = await response.json();
+
+            // Lógica para manejar los resultados en el lado del cliente
+            const resultadosContainer = document.getElementById('resultados-container');
+            resultadosContainer.innerHTML = `<p>Nombre del producto: ${data.nombre_producto}</p>
+                                             <p>Clase del producto: ${data.clase_producto}</p>
+                                             <p>Nombre Marca: ${data.nombre_marca}</p>
+                                             <p>Datos en formato JSON: ${JSON.stringify(data)}</p>`;
+            // Puedes agregar más manipulación DOM según sea necesario...
+        }
+
+        // Llama a la función para obtener y manejar los resultados
+        obtenerResultados();
+    </script>
+</body>
+</html>
