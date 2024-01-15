@@ -35,7 +35,8 @@ def resultados():
         ingresos_anuales = form_data.get('ingresosA')
         tipo_promocion = form_data.get('TipoP')
         #ciudad = form_data.get('Ciudad')
-        fecha = form_data.get('fechaSelector')
+        dia = form_data.get('dia')
+        mes = form_data.get('mes')
         costo_unitario = form_data.get('CUnitario')
         precio_unitario = form_data.get('PrecioU')
         subcategoria = form_data.get('inputSubC')
@@ -74,7 +75,8 @@ def resultados():
             'ingresos_anuales': ingresos_anuales,
             'tipo_promocion': tipo_promocion,
             #'ciudad': ciudad,
-            'fecha': fecha,
+            'dia':dia,
+            'mes':mes,
             'costo_unitario': costo_unitario,
             'precio_unitario': precio_unitario,
             'subcategoria': subcategoria,

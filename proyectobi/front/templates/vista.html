@@ -63,30 +63,30 @@
                                         <label for="inputnombreM">Nombre Marca:</label>
                                         <select id="inputnombreM" class="form-control" name="inputnombreM">
 
-                                            <option>Contoso</option>
-                                            <option>litware</option>
-                                            <option>Northwind Traders</option>
-                                            <option>Southridge Toys</option>
-                                            <option>Tailspin Toys</option>
-                                            <option>The Phone Company</option>
-                                            <option>Wide World importers</option>
+                                            <option value="1">Contoso</option>
+                                            <option value="2">litware</option>
+                                            <option value="3">Northwind Traders</option>
+                                            <option value="4">Southridge Toys</option>
+                                            <option value="5">Tailspin Toys</option>
+                                            <option value="6">The Phone Company</option>
+                                            <option value="7">Wide World importers</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="ColorP">Color Producto:</label>
                                         <select id="inputColorP" class="form-control" name="inputColorP">
                                             <option selected>Color producto...</option>
-                                            <option>Amarillo</option>
-                                            <option>Azul</option>
-                                            <option>Blanco</option>
-                                            <option>Gtis</option>
-                                            <option>Marron</option>
-                                            <option>Negro</option>
-                                            <option>Oro</option>
-                                            <option>Plata</option>
-                                            <option>Red</option>
-                                            <option>Rosa</option>
-                                            <option>Verde</option>
+                                            <option value="1">Amarillo</option>
+                                            <option value="2">Azul</option>
+                                            <option value="3">Blanco</option>
+                                            <option value="4">Gtis</option>
+                                            <option value="5">Marron</option>
+                                            <option value="6">Negro</option>
+                                            <option value="7">Oro</option>
+                                            <option value="8">Plata</option>
+                                            <option value="9">Red</option>
+                                            <option value="10">Rosa</option>
+                                            <option value="11">Verde</option>
 
                                         </select>
                                     </div>
@@ -94,9 +94,9 @@
                                         <label for="Stock">Estado Stock:</label>
                                         <select id="inputStock" class="form-control" name="inputStock">
                                             <option selected>Stock...</option>
-                                            <option>Medio</option>
-                                            <option>alto</option>
-                                            <option>bajo</option>
+                                            <option value="0">Medio</option>
+                                            <option value="1">alto</option>
+                                            <option value="2">bajo</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -221,8 +221,13 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputEstadoC">Estado Civil:</label>
-                                        <input type="text" oninput="validarSoloLetras(this)" class="form-control"
-                                            name="inputEstadoC" id="inputEstadoC" oninput="validarSoloLetras(this)">
+                                        
+                                        <select class="form-control" id="inputEstadoC" name="inputEstadoC">
+                                            <option value="0">Soltero</option>
+                                            <option value="1">Casado</option>
+                                            <option value="2">Divorciado</option>
+                                            <option value="3">Viudo</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="genero">Género:</label>

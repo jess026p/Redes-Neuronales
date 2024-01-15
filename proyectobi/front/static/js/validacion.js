@@ -1,5 +1,6 @@
 //validar formulario
 //validar formulario con metodo post oara enviarl al servidor
+
 document.addEventListener("DOMContentLoaded", function () {
     // Agrega el evento onsubmit al formulario
     var formulario = document.getElementById('formularioPrediccion');
@@ -111,7 +112,8 @@ if (
         'ingresosA': ingresosA,
         'TipoP': TipoP,
         'Ciudad': Ciudad,
-        'fechaSelector': fechaSelector,
+        'dia': dia,
+        'mes': mes,
         'CUnitario': CUnitario,
         'PrecioU': PrecioU,
         'inputSubC': inputSubC,
@@ -181,15 +183,26 @@ async function realizarPrediccion() {
 
 
 
-
-// Configuración del Datepicker -->
+// Declarar variables globales para dia y mes
+var dia;
+var mes;
+// Configuración del Datepicker
 $(document).ready(function () {
     $('#fechaSelector').datepicker({
         format: 'dd/mm/yyyy',
         autoclose: true,
         todayHighlight: true
+    }).on('changeDate', function (e) {
+        // Se ejecutará cuando cambie la fecha seleccionada
+
+        // Obtener el día y el mes
+        var fechaSeleccionada = e.date;
+         dia = fechaSeleccionada.getDate();
+         mes = fechaSeleccionada.getMonth() + 1; // Los meses en JavaScript son de 0 a 11, sumamos 1 para obtener el mes real
+
     });
 });
+
 
 function validarSoloLetras(input) {
     // Expresión regular que permite solo letras (sin espacios)
@@ -225,7 +238,9 @@ function validarSoloLetras(input) {
     function enviarFormulario(event) {
         // Capturar los datos del formulario
         var formData = capturarDatosFormulario();
-    
+    // Agregar dia y mes al objeto formData
+    //formData.dia = dia;
+    //formData.mes = mes;
         // Asignar los datos al campo oculto
         document.getElementById('datosFormulario').value = JSON.stringify(formData);
     
