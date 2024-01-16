@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 });
 
 async function loaded() {
-    const select = document.getElementById("inputnombreT");
+    const select = document.getElementById("nombre_tienda");
 
     try {
         const shops = await fetch("static/data/Select.csv");
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 });
 
 async function loadedSubcategoria() {
-    const selectSubcategoria = document.getElementById("inputSubC");
+    const selectSubcategoria = document.getElementById("subcategoria");
 
     try {
         // Cambia la ruta del archivo CSV según sea necesario
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 });
 
 async function loadedOcupacionCliente() {
-    const selectOcupacionCliente = document.getElementById("inputOcupacionC");
+    const selectOcupacionCliente = document.getElementById("ocupacion_cliente");
 
     try {
         // Cambia la ruta del archivo CSV según sea necesario
