@@ -53,6 +53,7 @@ def resultados():
         region = form_data.get('region')
         dia = form_data.get('dia')
         mes = form_data.get('mes')
+        trimestre = form_data.get('trimestre')
        
         
         # Puedes agregar más lógica según sea necesario...
@@ -92,7 +93,8 @@ def resultados():
             'pais': pais,
             'region': region,
             'dia': dia,
-            'mes': mes
+            'mes': mes,
+            'trimestre': trimestre
         })
     
     return jsonify({'error': 'Método no permitido'}), 405

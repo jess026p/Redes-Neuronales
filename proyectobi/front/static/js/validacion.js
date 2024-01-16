@@ -114,6 +114,7 @@ if (
         //'Ciudad': Ciudad,
         'dia': dia,
         'mes': mes,
+        'trimestre':trimestre, 
         'costo_unitario': costo_unitario,
         'precio_unitario': precio_unitario,
         'subcategoria': subcategoria,
@@ -164,12 +165,14 @@ async function realizarPrediccion() {
     const clase_producto = document.getElementById('clase_producto').value;
     const nombre_marca = document.getElementById('nombre_marca').value;
 
+   
     const response = await fetch(`/prediccion?nomb_producto=${nomb_producto}&clase_producto=${clase_producto}&nombre_marca=${nombre_marca}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     });
+    
 
     const data = await response.json();
 
@@ -186,6 +189,7 @@ async function realizarPrediccion() {
 // Declarar variables globales para dia y mes
 var dia;
 var mes;
+var trimestre;
 // Configuración del Datepicker
 $(document).ready(function () {
     $('#fechaSelector').datepicker({
@@ -199,7 +203,16 @@ $(document).ready(function () {
         var fechaSeleccionada = e.date;
          dia = fechaSeleccionada.getDate();
          mes = fechaSeleccionada.getMonth() + 1; // Los meses en JavaScript son de 0 a 11, sumamos 1 para obtener el mes real
-
+        
+         if (mes >= 1 && mes <= 3) {
+             trimestre = 1;
+         } else if (mes >= 4 && mes <= 6) {
+             trimestre = 2;
+         } else if (mes >= 7 && mes <= 9) {
+             trimestre = 3;
+         } else {
+             trimestre = 4;
+         }
     });
 });
 
