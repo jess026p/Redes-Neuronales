@@ -18,81 +18,81 @@ def resultados():
         form_data = request.get_json()
 
         # Obtener todos los campos del formulario
-        nombre_producto = form_data.get('nproducto')
-        clase_producto = form_data.get('cproducto')
-        nombre_marca = form_data.get('inputnombreM')
-        #color_producto = form_data.get('inputColorP')
-        estado_stock = form_data.get('inputStock')
-        #cantidad_descuento = form_data.get('inputCantDescuento')
-        monto_devolucion = form_data.get('inputMontoDev')
-        #cantidad_venta = form_data.get('inputCantVenta')
-        canal = form_data.get('canal')
-        #nombre_tienda = form_data.get('inputnombreT')
-        ocupacion_cliente = form_data.get('inputOcupacionC')
-        #hijos_en_casa = form_data.get('NHijos')
-        total_hijos = form_data.get('THijos')
-        numero_autos = form_data.get('NAutos')
-        ingresos_anuales = form_data.get('ingresosA')
-        tipo_promocion = form_data.get('TipoP')
-        #ciudad = form_data.get('Ciudad')
-        dia = form_data.get('dia')
-        mes = form_data.get('mes')
-        costo_unitario = form_data.get('CUnitario')
-        precio_unitario = form_data.get('PrecioU')
-        subcategoria = form_data.get('inputSubC')
-        #peso_producto = form_data.get('inputPesoP')
+        nombre_producto = form_data.get('nomb_producto')
+        clase_producto = form_data.get('clase_producto')
+        costo_unitario = form_data.get('costo_unitario')
+        precio_unitario = form_data.get('precio_unitario')
+        nombre_marca = form_data.get('nombre_marca')
+        #color_producto = form_data.get('color_producto')
+        subcategoria = form_data.get('subcategoria')
+        #peso_producto = form_data.get('peso_producto')
+        estado_stock = form_data.get('estado_stock')
+        #cant_descuento = form_data.get('cant_descuento')
         monto_descuento = form_data.get('inputDesc')
-        #cantidad_devolucion = form_data.get('inputDevo')
-        venta_total = form_data.get('inputVentaT')
-        ganancias = form_data.get('inputGanancias')
-        estado_civil = form_data.get('inputEstadoC')
-        genero = form_data.get('genero')
-        educacion_cliente = form_data.get('inputEDUC')
-        casa_propia = form_data.get('casa')
-        #promocion = form_data.get('inputPromociones')
-        porcentaje_descuento = form_data.get('inputpoDesc')
+        #cantidad_devolucion = form_data.get('cantidad_devolucion')
+        monto_devolucion = form_data.get('monto_devolucion')
+        #cantidad_venta = form_data.get('cantidad_venta')
+        venta_total = form_data.get('Venta_total')
+        ganancia = form_data.get('ganancia')
+        #nombre_tienda = form_data.get('nombre_tienda')
+        canal = form_data.get('canal')
+        estado_civil = form_data.get('estado_civil')
+        genero_cliente = form_data.get('genero_cliente')
+        ocupacion_cliente = form_data.get('ocupacion_cliente')
+        #hijos_en_casa = form_data.get('hijos_en_casa')
+        total_hijos = form_data.get('total_hijos')
+        educacion_cliente = form_data.get('educacion_cliente')
+        tiene_casa = form_data.get('tiene_casa')
+        numero_autos = form_data.get('numero_autos')
+        ingresos_anuales = form_data.get('ingresos_anuales')
+        nomb_promocion = form_data.get('nomb_promocion')
+        porcentaje_descuento = form_data.get('porcentaje_descuento')
+        tipo_promocion = form_data.get('tipo_promocion')
+        #ciudad = form_data.get('Ciudad')
         pais = form_data.get('pais')
         region = form_data.get('region')
-
+        dia = form_data.get('dia')
+        mes = form_data.get('mes')
+       
+        
         # Puedes agregar más lógica según sea necesario...
 
         # Devolver los datos en formato JSON
         return jsonify({
             'nombre_producto': nombre_producto,
             'clase_producto': clase_producto,
-            'nombre_marca': nombre_marca,
-            #'color_producto': color_producto,
-            'estado_stock': estado_stock,
-            #'cantidad_descuento': cantidad_descuento,
-            'monto_devolucion': monto_devolucion,
-            #'cantidad_venta': cantidad_venta,
-            'canal': canal,
-            #'nombre_tienda': nombre_tienda,
-            'ocupacion_cliente': ocupacion_cliente,
-            #'hijos_en_casa': hijos_en_casa,
-            'total_hijos_en_casa': total_hijos,
-            'numero_autos': numero_autos,
-            'ingresos_anuales': ingresos_anuales,
-            'tipo_promocion': tipo_promocion,
-            #'ciudad': ciudad,
-            'dia':dia,
-            'mes':mes,
             'costo_unitario': costo_unitario,
             'precio_unitario': precio_unitario,
+            'nombre_marca': nombre_marca,
+            #'color_producto': color_producto,
             'subcategoria': subcategoria,
-            #'peso_producto': peso_producto,
+             #'peso_producto': peso_producto,
+            'estado_stock': estado_stock,
+            #'cantidad_descuento': cantidad_descuento,
             'monto_descuento': monto_descuento,
             #'cantidad_devolucion': cantidad_devolucion,
+            'monto_devolucion': monto_devolucion,
+            #'cantidad_venta': cantidad_venta,
             'venta_total': venta_total,
-            'ganancias': ganancias,
+            'ganancia': ganancia,
+            #'nombre_tienda': nombre_tienda,
+            'canal': canal,
             'estado_civil': estado_civil,
-            'genero': genero,
+            'genero_cliente': genero_cliente,
+            'ocupacion_cliente': ocupacion_cliente,
+            #'hijos_en_casa': hijos_en_casa,
+            'total_hijos': total_hijos,
             'educacion_cliente': educacion_cliente,
-            'casa_propia': casa_propia,
-            #'promocion': promocion,
+            'tiene_casa': tiene_casa,
+            'numero_autos': numero_autos,
+            'ingresos_anuales': ingresos_anuales,
+            'nomb_promocion': nomb_promocion,
             'porcentaje_descuento': porcentaje_descuento,
+            'tipo_promocion': tipo_promocion,
             'pais': pais,
-            'region': region
+            'region': region,
+            'dia': dia,
+            'mes': mes
         })
     
     return jsonify({'error': 'Método no permitido'}), 405
@@ -114,8 +114,6 @@ def realizar_prediccion():
     return jsonify({
         'categoria_predicha': categoria_predicha
     })
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
