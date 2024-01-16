@@ -52,7 +52,7 @@ def resultados():
         pais = form_data.get('pais')
         region = form_data.get('region')
         dia = form_data.get('dia')
-        mes = form_data.get('mes')
+        mes = form_data.get('mesN')
         trimestre = form_data.get('trimestre')
        
         
@@ -67,7 +67,7 @@ def resultados():
             'dia': dia,
             'total_hijos': total_hijos,
             'tiene_casa': tiene_casa,
-            'venta_total': venta_total,
+            'Venta_total': venta_total,
             'ganancia': ganancia,
             'ingresos_anuales': ingresos_anuales,
              'porcentaje_descuento': porcentaje_descuento,

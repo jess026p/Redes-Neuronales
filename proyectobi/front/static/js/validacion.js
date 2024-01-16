@@ -113,7 +113,7 @@ if (
         'tipo_promocion': tipo_promocion,
         //'Ciudad': Ciudad,
         'dia': dia,
-        'mes': mes,
+        'mes': mesN,
         'trimestre': trimestre,
         'costo_unitario': costo_unitario,
         'precio_unitario': precio_unitario,
@@ -168,7 +168,7 @@ async function realizarPrediccion() {
     const dia = fechaSeleccionada.getDate();
     const total_hijos = document.getElementById('total_hijos').value;
     const tiene_casa = document.getElementById('tiene_casa').value;
-    const venta_total = document.getElementById('venta_total').value;
+    const venta_total = document.getElementById('Venta_total').value;
     const ganancia = document.getElementById('ganancia').value;
     const ingresos_anuales = document.getElementById('ingresos_anuales').value;
     const porcentaje_descuento = document.getElementById('porcentaje_descuento').value;
@@ -183,11 +183,20 @@ async function realizarPrediccion() {
     const tipo_promocion = document.getElementById('tipo_promocion').value;
     const pais = document.getElementById('pais').value;
     const region = document.getElementById('region').value;
-    const mes = fechaSeleccionada.getDate();
+   
     const trimestre = document.getElementById('trimestre').value;
 
    
-    const response = await fetch(`/prediccion?nomb_producto=${nomb_producto}&clase_producto=${clase_producto}&nombre_marca=${nombre_marca}&costo_unitario=${costo_unitario}&precio_unitario=${precio_unitario}&monto_descuento=${monto_descuento}&monto_devolucion=${monto_devolucion}&dia=${dia}&total_hijos=${total_hijos}&tiene_casa=${tiene_casa}&Venta_total=${venta_total}&ganancia=${ganancia}&ingresos_anuales=${ingresos_anuales}&porcentaje_descuento=${porcentaje_descuento}&numero_autos=${numero_autos}&subcategoria=${subcategoria}&canal=${canal}&estado_civil=${estado_civil}&genero_cliente=${genero_cliente}&ocupacion_cliente=${ocupacion_cliente}&educacion_cliente=${educacion_cliente}&estado_stock=${estado_stock}&tipo_promocion=${tipo_promocion}&pais=${pais}&region=${region}&mes=${mes}&trimestre=${trimestre}`, {
+    const response = await fetch(`/prediccion?nomb_producto=${nomb_producto}&clase_producto=${clase_producto}
+    &nombre_marca=${nombre_marca}&costo_unitario=${costo_unitario}
+    &precio_unitario=${precio_unitario}&monto_descuento=${monto_descuento}
+    &monto_devolucion=${monto_devolucion}&dia=${dia}&total_hijos=${total_hijos}
+    &tiene_casa=${tiene_casa}&Venta_total=${venta_total}&ganancia=${ganancia}
+    &ingresos_anuales=${ingresos_anuales}&porcentaje_descuento=${porcentaje_descuento}
+    &numero_autos=${numero_autos}&subcategoria=${subcategoria}&canal=${canal}
+    &estado_civil=${estado_civil}&genero_cliente=${genero_cliente}
+    &ocupacion_cliente=${ocupacion_cliente}&educacion_cliente=${educacion_cliente}
+    &estado_stock=${estado_stock}&tipo_promocion=${tipo_promocion}&pais=${pais}&region=${region}&mesN=${mesN}&trimestre=${trimestre}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -210,8 +219,10 @@ async function realizarPrediccion() {
 // Declarar variables globales para dia y mes
 var dia;
 var mes;
+var mesN;
 var trimestre;
-var fechaSeleccionada
+var fechaSeleccionada;
+var nombresMeses;
 // Configuración del Datepicker
 $(document).ready(function () {
     $('#fechaSelector').datepicker({
@@ -225,17 +236,21 @@ $(document).ready(function () {
          fechaSeleccionada = e.date;
          dia = fechaSeleccionada.getDate();
          mes = fechaSeleccionada.getMonth() + 1; // Los meses en JavaScript son de 0 a 11, sumamos 1 para obtener el mes real
-        
+         
+         mesN = nombresMeses[mes - 1];
+         
          if (mes >= 1 && mes <= 3) {
-             trimestre = 1;
+             trimestre = "1er tri";
          } else if (mes >= 4 && mes <= 6) {
-             trimestre = 2;
+             trimestre = "2do tri";
          } else if (mes >= 7 && mes <= 9) {
-             trimestre = 3;
+             trimestre = "3er tri";
          } else {
-             trimestre = 4;
+             trimestre = "4to tri";
          }
     });
+    var nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
 });
 
 
