@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var ingresos_anuales = document.getElementById('ingresos_anuales').value;
             var tipo_promocion = document.getElementById('tipo_promocion').value;
             //var Ciudad = document.getElementById('Ciudad').value;
-            var fechaSelector = document.getElementById('fechaSelector').value;
+            //var fechaSelector = document.getElementById('fechaSelector').value;
             var costo_unitario = document.getElementById('costo_unitario').value;
             var precio_unitario = document.getElementById('precio_unitario').value;
             var subcategoria = document.getElementById('subcategoria').value;
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ingresos_anuales === '' ||
                 tipo_promocion === '' ||
                 //Ciudad === '' ||
-                fechaSelector === '' ||
+                //fechaSelector === '' ||
                 costo_unitario === '' ||
                 precio_unitario === '' ||
                 subcategoria === '' ||
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     'tipo_promocion': tipo_promocion,
                     //'Ciudad': Ciudad,
                     'dia': dia,
-                    'mes': mesN,
+                    'mes': mes,
                     'trimestre': trimestre,
                     'costo_unitario': costo_unitario,
                     'precio_unitario': precio_unitario,
@@ -159,98 +159,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //metodo prediccion
 async function realizarPrediccion() {
-    const costo_unitario = document.getElementById('costo_unitario').value;
-    const precio_unitario = document.getElementById('precio_unitario').value;
-    const monto_descuento = document.getElementById('monto_descuento').value;
-    const monto_devolucion = document.getElementById('monto_devolucion').value;
-    const dia = fechaSeleccionada.getDate();
-    const total_hijos = document.getElementById('total_hijos').value;
-    const tiene_casa = document.getElementById('tiene_casa').value;
-    const venta_total = document.getElementById('Venta_total').value;
-    const ganancia = document.getElementById('ganancia').value;
-    const ingresos_anuales = document.getElementById('ingresos_anuales').value;
-    const porcentaje_descuento = document.getElementById('porcentaje_descuento').value;
-    const numero_autos = document.getElementById('numero_autos').value;
-    const subcategoria = document.getElementById('subcategoria').value;
-    const canal = document.getElementById('canal').value;
-    const estado_civil = document.getElementById('estado_civil').value;
-    const genero_cliente = document.getElementById('genero_cliente').value;
-    const ocupacion_cliente = document.getElementById('ocupacion_cliente').value;
-    const educacion_cliente = document.getElementById('educacion_cliente').value;
-    const estado_stock = document.getElementById('estado_stock').value;
-    const tipo_promocion = document.getElementById('tipo_promocion').value;
-    const pais = document.getElementById('pais').value;
-    const region = document.getElementById('region').value;
-
-    const trimestre = document.getElementById('trimestre').value;
-
-
-    const response = await fetch(`/prediccion?nomb_producto=${nomb_producto}&clase_producto=${clase_producto}
-    &nombre_marca=${nombre_marca}&costo_unitario=${costo_unitario}
-    &precio_unitario=${precio_unitario}&monto_descuento=${monto_descuento}
-    &monto_devolucion=${monto_devolucion}&dia=${dia}&total_hijos=${total_hijos}
-    &tiene_casa=${tiene_casa}&Venta_total=${venta_total}&ganancia=${ganancia}
-    &ingresos_anuales=${ingresos_anuales}&porcentaje_descuento=${porcentaje_descuento}
-    &numero_autos=${numero_autos}&subcategoria=${subcategoria}&canal=${canal}
-    &estado_civil=${estado_civil}&genero_cliente=${genero_cliente}
-    &ocupacion_cliente=${ocupacion_cliente}&educacion_cliente=${educacion_cliente}
-    &estado_stock=${estado_stock}&tipo_promocion=${tipo_promocion}&pais=${pais}&region=${region}&mesN=${mesN}&trimestre=${trimestre}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-
-
-    const data = await response.json();
-
-    // Lógica para manejar la predicción en el lado del cliente
-    const prediccionInput = document.getElementById('prediccion');
-    prediccionInput.value = data.categoria_predicha;
-    // Puedes agregar más manipulación DOM según sea necesario...
+    async function realizarPrediccion() {
+        const costo_unitario = document.getElementById('costo_unitario').value;
+        const precio_unitario = document.getElementById('precio_unitario').value;
+        const monto_descuento = document.getElementById('monto_descuento').value;
+        const monto_devolucion = document.getElementById('monto_devolucion').value;
+       
+        const total_hijos = document.getElementById('total_hijos').value;
+        const tiene_casa = document.getElementById('tiene_casa').value;
+        const venta_total = document.getElementById('Venta_total').value;
+        const ganancia = document.getElementById('ganancia').value;
+        const ingresos_anuales = document.getElementById('ingresos_anuales').value;
+        const porcentaje_descuento = document.getElementById('porcentaje_descuento').value;
+        const numero_autos = document.getElementById('numero_autos').value;
+        const subcategoria = document.getElementById('subcategoria').value;
+        const canal = document.getElementById('canal').value;
+        const estado_civil = document.getElementById('estado_civil').value;
+        const genero_cliente = document.getElementById('genero_cliente').value;
+        const ocupacion_cliente = document.getElementById('ocupacion_cliente').value;
+        const educacion_cliente = document.getElementById('educacion_cliente').value;
+        const estado_stock = document.getElementById('estado_stock').value;
+        const tipo_promocion = document.getElementById('tipo_promocion').value;
+        const pais = document.getElementById('pais').value;
+        const region = document.getElementById('region').value;
+        const dia = document.getElementById('dia').value;
+        const mes = document.getElementById('mes').value;
+        const trimestre = document.getElementById('trimestre').value;
+    
+        // Construir la cadena de consulta
+        const params = new URLSearchParams({
+            'costo_unitario': costo_unitario,
+            'precio_unitario': precio_unitario,
+            'monto_descuento': monto_descuento,
+            'monto_devolucion': monto_devolucion,
+            'total_hijos': total_hijos,
+            'tiene_casa': tiene_casa,
+            'venta_total': venta_total,
+            'ganancia': ganancia,
+            'ingresos_anuales': ingresos_anuales,
+            'porcentaje_descuento': porcentaje_descuento,
+            'numero_autos': numero_autos,
+            'subcategoria': subcategoria,
+            'canal': canal,
+            'estado_civil': estado_civil,
+            'genero_cliente': genero_cliente,
+            'ocupacion_cliente': ocupacion_cliente,
+            'educacion_cliente': educacion_cliente,
+            'estado_stock': estado_stock,
+            'tipo_promocion': tipo_promocion,
+            'pais': pais,
+            'region': region,
+            'dia': dia,
+            'mes': mes,
+            'trimestre': trimestre
+        });
+    
+        const response = await fetch(`/prediccion?${params}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        // Resto del código...
+    }
+    
 }
 
 
 
-
-
-// Declarar variables globales para dia y mes
-var dia;
-var mes;
-var mesN;
-var trimestre;
-var fechaSeleccionada;
-var nombresMeses;
-// Configuración del Datepicker
-$(document).ready(function () {
-    $('#fechaSelector').datepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        todayHighlight: true
-    }).on('changeDate', function (e) {
-        // Se ejecutará cuando cambie la fecha seleccionada
-
-        var nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-
-        fechaSeleccionada = e.date;
-        dia = fechaSeleccionada.getDate();
-        mes = fechaSeleccionada.getMonth();
-
-        mesN = nombresMeses[mes];
-        console.log(mesN)
-
-        if (mes >= 1 && mes <= 3) {
-            trimestre = "1er tri";
-        } else if (mes >= 4 && mes <= 6) {
-            trimestre = "2do tri";
-        } else if (mes >= 7 && mes <= 9) {
-            trimestre = "3er tri";
-        } else {
-            trimestre = "4to tri";
-        }
-    });
-
-});
 
 
 function validarSoloLetras(input) {
