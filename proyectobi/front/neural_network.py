@@ -37,11 +37,12 @@ def preparar_datos(df):
     label_encoder = LabelEncoder()
     df[etiqueta_columna] = label_encoder.fit_transform(df[etiqueta_columna])
 
-    # Obtener características (X) y etiquetas (y)
+    # Obtener características (X)
     df = df.drop(etiqueta_columna, axis=1)
 
     # Convertir características a tipo numérico
     df = df.apply(pd.to_numeric, errors='coerce')
+    df.insert(0, 'bias', 1)
 
     return df
 
@@ -49,11 +50,11 @@ def preparar_datos(df):
 def modelo_predictivo(df):
     # Cargar el modelo y los pesos
     model = tf.keras.Sequential([
-        tf.keras.layers.Dense(64, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01), input_shape=(df.shape[1],)),
-        tf.keras.layers.Dense(32, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
-        tf.keras.layers.Dense(16, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
-        tf.keras.layers.Dense(8, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
-        tf.keras.layers.Dense(4, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
+        tf.keras.layers.Dense(12, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01), input_shape=(df.shape[1],)),
+        tf.keras.layers.Dropout(0.4),
+        tf.keras.layers.Dense(7, activation='tanh', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
+        tf.keras.layers.Dropout(0.3),
+        tf.keras.layers.Dense(3, activation='sigmoid', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
         tf.keras.layers.Dense(4, activation='softmax')  # 4 clases (labels)
     ])
     model.load_weights('pesos_entrenados.h5')
