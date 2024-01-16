@@ -24,6 +24,7 @@ var estado_stock = document.getElementById('estado_stock').value;
 var monto_devolucion = document.getElementById('monto_devolucion').value;
 //var cantidad_venta = document.getElementById('cantidad_venta').value;
 var canal = document.getElementById('canal').value;
+var tiene_casa = document.getElementById('tiene_casa').value;
 //var nombre_tienda = document.getElementById('nombre_tienda').value;
 var ocupacion_cliente = document.getElementById('ocupacion_cliente').value;
 //var hijos_en_casa = document.getElementById('hijos_en_casa').value;

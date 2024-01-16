@@ -28,7 +28,7 @@ def resultados():
         #peso_producto = form_data.get('peso_producto')
         estado_stock = form_data.get('estado_stock')
         #cant_descuento = form_data.get('cant_descuento')
-        monto_descuento = form_data.get('inputDesc')
+        monto_descuento = form_data.get('monto_descuento')
         #cantidad_devolucion = form_data.get('cantidad_devolucion')
         monto_devolucion = form_data.get('monto_devolucion')
         #cantidad_venta = form_data.get('cantidad_venta')
@@ -45,7 +45,7 @@ def resultados():
         tiene_casa = form_data.get('tiene_casa')
         numero_autos = form_data.get('numero_autos')
         ingresos_anuales = form_data.get('ingresos_anuales')
-        nomb_promocion = form_data.get('nomb_promocion')
+       #nomb_promocion = form_data.get('nomb_promocion')
         porcentaje_descuento = form_data.get('porcentaje_descuento')
         tipo_promocion = form_data.get('tipo_promocion')
         #ciudad = form_data.get('Ciudad')
@@ -86,7 +86,7 @@ def resultados():
             'tiene_casa': tiene_casa,
             'numero_autos': numero_autos,
             'ingresos_anuales': ingresos_anuales,
-            'nomb_promocion': nomb_promocion,
+            #'nomb_promocion': nomb_promocion,
             'porcentaje_descuento': porcentaje_descuento,
             'tipo_promocion': tipo_promocion,
             'pais': pais,

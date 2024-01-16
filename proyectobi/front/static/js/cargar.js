@@ -1,9 +1,10 @@
+ 
 document.addEventListener("DOMContentLoaded", async function() {
     await loaded();
 });
 
 async function loaded() {
-    const select = document.getElementById("nombre_tienda");
+    /*const select = document.getElementById("nombre_tienda");
 
     try {
         const shops = await fetch("static/data/Select.csv");
@@ -22,8 +23,9 @@ async function loaded() {
             });
     } catch (error) {
         console.error("Error al cargar el archivo CSV:", error);
-    }
+    }**/
 }
+
 document.addEventListener("DOMContentLoaded", async function() {
     await loadedSubcategoria();
 });
