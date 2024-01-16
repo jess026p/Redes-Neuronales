@@ -104,7 +104,7 @@ def realizar_prediccion():
 
     json_data = resultados()
     df = pd.DataFrame([json_data])
-    df = rn.modelo_predictivo(df)
+    df = rn.normalizar_df(df)
     df = rn.onehot_encoding(df)
     df = rn.preparar_datos(df)
   
