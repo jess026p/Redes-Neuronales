@@ -114,7 +114,7 @@ if (
         //'Ciudad': Ciudad,
         'dia': dia,
         'mes': mes,
-        'trimestre':trimestre, 
+        'trimestre': trimestre,
         'costo_unitario': costo_unitario,
         'precio_unitario': precio_unitario,
         'subcategoria': subcategoria,

@@ -60,7 +60,7 @@ def resultados():
 
         # Devolver los datos en formato JSON
         return jsonify({
-            'nombre_producto': nombre_producto,
+            'nomb_producto': nombre_producto,
             'clase_producto': clase_producto,
             'costo_unitario': costo_unitario,
             'precio_unitario': precio_unitario,
