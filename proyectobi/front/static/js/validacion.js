@@ -161,12 +161,33 @@ if (
 
  //metodo prediccion
 async function realizarPrediccion() {
-    const nomb_producto = document.getElementById('nomb_producto').value;
-    const clase_producto = document.getElementById('clase_producto').value;
-    const nombre_marca = document.getElementById('nombre_marca').value;
+    const costo_unitario = document.getElementById('costo_unitario').value;
+    const precio_unitario = document.getElementById('precio_unitario').value;
+    const monto_descuento = document.getElementById('monto_descuento').value;
+    const monto_devolucion = document.getElementById('monto_devolucion').value;
+    const dia = fechaSeleccionada.getDate();
+    const total_hijos = document.getElementById('total_hijos').value;
+    const tiene_casa = document.getElementById('tiene_casa').value;
+    const venta_total = document.getElementById('venta_total').value;
+    const ganancia = document.getElementById('ganancia').value;
+    const ingresos_anuales = document.getElementById('ingresos_anuales').value;
+    const porcentaje_descuento = document.getElementById('porcentaje_descuento').value;
+    const numero_autos = document.getElementById('numero_autos').value;
+    const subcategoria = document.getElementById('subcategoria').value;
+    const canal = document.getElementById('canal').value;
+    const estado_civil = document.getElementById('estado_civil').value;
+    const genero_cliente = document.getElementById('genero_cliente').value;
+    const ocupacion_cliente = document.getElementById('ocupacion_cliente').value;
+    const educacion_cliente = document.getElementById('educacion_cliente').value;
+    const estado_stock = document.getElementById('estado_stock').value;
+    const tipo_promocion = document.getElementById('tipo_promocion').value;
+    const pais = document.getElementById('pais').value;
+    const region = document.getElementById('region').value;
+    const mes = fechaSeleccionada.getDate();
+    const trimestre = document.getElementById('trimestre').value;
 
    
-    const response = await fetch(`/prediccion?nomb_producto=${nomb_producto}&clase_producto=${clase_producto}&nombre_marca=${nombre_marca}`, {
+    const response = await fetch(`/prediccion?nomb_producto=${nomb_producto}&clase_producto=${clase_producto}&nombre_marca=${nombre_marca}&costo_unitario=${costo_unitario}&precio_unitario=${precio_unitario}&monto_descuento=${monto_descuento}&monto_devolucion=${monto_devolucion}&dia=${dia}&total_hijos=${total_hijos}&tiene_casa=${tiene_casa}&Venta_total=${venta_total}&ganancia=${ganancia}&ingresos_anuales=${ingresos_anuales}&porcentaje_descuento=${porcentaje_descuento}&numero_autos=${numero_autos}&subcategoria=${subcategoria}&canal=${canal}&estado_civil=${estado_civil}&genero_cliente=${genero_cliente}&ocupacion_cliente=${ocupacion_cliente}&educacion_cliente=${educacion_cliente}&estado_stock=${estado_stock}&tipo_promocion=${tipo_promocion}&pais=${pais}&region=${region}&mes=${mes}&trimestre=${trimestre}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -190,6 +211,7 @@ async function realizarPrediccion() {
 var dia;
 var mes;
 var trimestre;
+var fechaSeleccionada
 // Configuración del Datepicker
 $(document).ready(function () {
     $('#fechaSelector').datepicker({
@@ -200,7 +222,7 @@ $(document).ready(function () {
         // Se ejecutará cuando cambie la fecha seleccionada
 
         // Obtener el día y el mes
-        var fechaSeleccionada = e.date;
+         fechaSeleccionada = e.date;
          dia = fechaSeleccionada.getDate();
          mes = fechaSeleccionada.getMonth() + 1; // Los meses en JavaScript son de 0 a 11, sumamos 1 para obtener el mes real
         

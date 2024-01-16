@@ -60,39 +60,39 @@ def resultados():
 
         # Devolver los datos en formato JSON
         return jsonify({
-            'nomb_producto': nombre_producto,
-            'clase_producto': clase_producto,
             'costo_unitario': costo_unitario,
             'precio_unitario': precio_unitario,
+            'monto_descuento': monto_descuento,
+            'monto_devolucion': monto_devolucion,
+            'dia': dia,
+            'total_hijos': total_hijos,
+            'tiene_casa': tiene_casa,
+            'venta_total': venta_total,
+            'ganancia': ganancia,
+            'ingresos_anuales': ingresos_anuales,
+             'porcentaje_descuento': porcentaje_descuento,
+            'numero_autos': numero_autos,
+             'nomb_producto': nombre_producto,
+            'clase_producto': clase_producto,
             'nombre_marca': nombre_marca,
             #'color_producto': color_producto,
             'subcategoria': subcategoria,
-             #'peso_producto': peso_producto,
-            'estado_stock': estado_stock,
-            #'cantidad_descuento': cantidad_descuento,
-            'monto_descuento': monto_descuento,
-            #'cantidad_devolucion': cantidad_devolucion,
-            'monto_devolucion': monto_devolucion,
-            #'cantidad_venta': cantidad_venta,
-            'venta_total': venta_total,
-            'ganancia': ganancia,
-            #'nombre_tienda': nombre_tienda,
             'canal': canal,
-            'estado_civil': estado_civil,
+             #'peso_producto': peso_producto,
+              'estado_civil': estado_civil,
+            #'cantidad_descuento': cantidad_descuento,
+            #'cantidad_devolucion': cantidad_devolucion,
+            #'cantidad_venta': cantidad_venta,          
+            #'nombre_tienda': nombre_tienda,
             'genero_cliente': genero_cliente,
             'ocupacion_cliente': ocupacion_cliente,
-            #'hijos_en_casa': hijos_en_casa,
-            'total_hijos': total_hijos,
+            #'hijos_en_casa': hijos_en_casa,    
             'educacion_cliente': educacion_cliente,
-            'tiene_casa': tiene_casa,
-            'numero_autos': numero_autos,
-            'ingresos_anuales': ingresos_anuales,
             #'nomb_promocion': nomb_promocion,
-            'porcentaje_descuento': porcentaje_descuento,
+             'estado_stock': estado_stock,
             'tipo_promocion': tipo_promocion,
             'pais': pais,
             'region': region,
-            'dia': dia,
             'mes': mes,
             'trimestre': trimestre
         })
@@ -107,6 +107,7 @@ def realizar_prediccion():
     json_data = resultados()
     df = pd.DataFrame([json_data])
     df = rn.normalizar_df(df)
+    print(df.columns)
     df = rn.onehot_encoding(df)
     df = rn.preparar_datos(df)
   
